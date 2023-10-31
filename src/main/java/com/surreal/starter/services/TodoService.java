@@ -21,6 +21,7 @@ public class TodoService implements ITodoService {
         this.driver = DBConnection.getDriver();
     }
 
+    @Override
     public TodoItem addListItem(String item) {
         TodoItem created = driver.create(tableName, TodoItem.builder().id(UUID.randomUUID().toString().replace("-", "")).value(item).build());
         return created;
@@ -28,28 +29,25 @@ public class TodoService implements ITodoService {
 
     @Override
     public TodoItem getItemById(String id) {
-        // TODO Auto-generated method stub
-
-        List<QueryResult<TodoItem>> query = driver.query("SELECT id,value FROM todo WHERE id=$id LIMIT BY 1;", Map.of("id", "todo:"+id), TodoItem.class);
-
+        List<QueryResult<TodoItem>> query = driver.query("SELECT id,string::uppercase(value) as value FROM todo WHERE id=$id LIMIT BY 1;", Map.of("id", "todo:"+id), TodoItem.class);
         if(query.size() == 0 ) return null;
-
         if(query.get(0).getResult().size() == 0) return null;
-
         return query.get(0).getResult().get(0);
     }
 
+    @Override
     public TodoItem deleteItemById(String id) {
-        List<QueryResult<TodoItem>> query = driver.query("DELETE todo WHERE id=$id;", Map.of("id", "todo:"+id), TodoItem.class);
-        if(query.size() == 0) return null;
+        List<QueryResult<TodoItem>> query = driver.query("SELECT id,string::uppercase(value) as value FROM todo WHERE id=$id LIMIT BY 1;", Map.of("id", "todo:"+id), TodoItem.class);
+        if(query.size() == 0 ) return null;
         if(query.get(0).getResult().size() == 0) return null;
-        return query.get(0).getResult().get(0);
+        
+        driver.query("DELETE todo WHERE id=$id;", Map.of("id", "todo:"+id), TodoItem.class);
 
+        return query.get(0).getResult().get(0);
     }
 
     @Override
     public List<TodoItem> getAllItems() {
-        // TODO Auto-generated method stub
         List<TodoItem> allUsers = driver.select(tableName, TodoItem.class);
         return allUsers;
     }

@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "6ada38b5-7920-47a6-b44a-be812514e4ec",
+		"name": "SurrealDB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5301708"
+	},
+	"item": [
+		{
+			"name": "Create List Item",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"item\": \"Break eggs\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/todo",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"todo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get List Item",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/todo",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"todo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get item by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/todo/1268b0be2e6b46d6a63a89e9187f10f4",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"todo",
+						"1268b0be2e6b46d6a63a89e9187f10f4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete item by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/todo/bf87d55815284828a1f8c1de81671c53",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"todo",
+						"bf87d55815284828a1f8c1de81671c53"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
