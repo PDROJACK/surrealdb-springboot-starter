@@ -26,20 +26,21 @@ git clone https://github.com/PDROJACK/surrealdb-springboot-starter.git
     ```mvn spring-boot:run```
 
 ## API Details
+1. Postman Collection for the API is present in ```docs/SurrealDB.spring.postman.json```
 
-1. OpenAPI definition can be accessed at this url after starting the app: http://localhost:8080/swagger-ui/index.html#/
+2. OpenAPI definition can be accessed at this url after starting the app: http://localhost:8080/swagger-ui/index.html#/
 ![alt text](./docs/openapi.png)
 
-2. [POST] Create Item
+3. [POST] Create Item
 ![alt text](./docs/post.png)
 
-3. [GET] Get Item by ID
+4. [GET] Get Item by ID
 ![alt text](./docs/getid.png)
 
-4. [DELETE] Delete Item by ID
+5. [DELETE] Delete Item by ID
 ![alt text](./docs/deleteid.png)
 
-5. [GET] Get All Items
+6. [GET] Get All Items
 ![alt text](./docs/getall.png)
 
 ## Contributing
